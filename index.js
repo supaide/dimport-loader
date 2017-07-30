@@ -22,8 +22,6 @@ let getReplacedStatement = function (projectDir, libname, target) {
   let main = getLibMainContent(projectDir, libname)
   let mainContent = main[0], mainFile = main[1]
   let reg = new RegExp('import[ |\\t]+'+target.trim()+'[ |\\t]+from[ |\\t]+[\'|"][^\'|^"]+[\'|"]', 'i')
-  console.log(reg)
-  //console.log(mainContent)
   let matchs = mainContent.match(reg)
   if (matchs) {
     let targetPath = matchs[0].split('from')[1].trim().substr(1)
@@ -39,8 +37,7 @@ module.exports = function (source) {
     return source
   }
   let projectDir = options.projectDir || process.cwd()
-  console.log("\n")
-  console.log(this.resourcePath)
+  console.log("\ndimport-loader " + this.resourcePath)
 
   let libname = options.libname
   // import {Page, Spinner} from 'spd-ui'
@@ -51,14 +48,12 @@ module.exports = function (source) {
       let replacement = []
       matchs[i].split('{')[1].split('}')[0].split(',').forEach(target => {
         let statement = getReplacedStatement(projectDir, options.libname, target)
-        console.log(statement)
         if (statement) {
           replacement.push(statement)
         }
       })
       source = source.replace(matchs[i], replacement.join(";"))
     }
-    //console.log(source)
   }
   return source
 }
