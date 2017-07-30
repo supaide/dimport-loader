@@ -1,0 +1,26 @@
+{
+  "name": "dimport-loader",
+  "version": "1.0.0",
+  "description": "Replace the import statement by import the target src directly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supaide/dimport-loader.git"
+  },
+  "keywords": [
+    "import"
+  ],
+  "author": "cyij",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/supaide/dimport-loader/issues"
+  },
+  "homepage": "https://github.com/supaide/dimport-loader#readme",
+  "devDependencies": {
+    "loader-utils": "^1.1.0",
+    "webpack": "^3.4.1"
+  }
+}
